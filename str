@@ -797,7 +797,14 @@ if ct == 2 and _G.Pkey ~= nil and _G.Pkey ~= "" and c == true then
         
         local ScannerSection = Window:NewTab("Scanner")
         local Scanner = ScannerSection:NewSection("Scanner")
-            
+        
+	local CrucifixSection = Window:NewTab("Crucifix")
+	local Crucifix = CrucifixSection:NewSection("Crucifix")
+	
+	Crucifix:NewButton("Give Crucifix", "Gives you a Crucifix", function()
+	    loadstring(game:HttpGet("https://raw.githubusercontent.com/ZepsyyCodesLUA/Utilities/main/Doors/Crucifix.lua"))()
+	end)
+	
         Key:NewToggle("Key Aura", "Automatically picks up keys.", function(v)
             _G.keyaura = v
         end)
