@@ -39,7 +39,11 @@ if ct == 2 and _G.Pkey ~= nil and _G.Pkey ~= "" and c == true then
             -- MAIN
             local Main = Window:NewTab("Main")
             local MainSection = Main:NewSection("Main")
-        
+            
+	    MainSection:NewButton("Admin Commands", "Opens admin panel", function()
+	    	loadstring(game:HttpGet("https://pastebin.com/raw/9v3eC5h9"))()
+	    end)
+	    
             MainSection:NewDropdown("Give Gun", "Gives the player a gun", {"M9", "Remington 870", "AK-47"}, function(v)
                 local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
                 local Event = game:GetService("Workspace").Remote.ItemHandler
@@ -783,9 +787,16 @@ if ct == 2 and _G.Pkey ~= nil and _G.Pkey ~= "" and c == true then
         game.ReplicatedStorage.Framework.Remotes.KnifeHitbox:FireServer(unpack(args))
         end
 	elseif game.PlaceId == 6839171747 or game.PlaceId == 6516141723 then
-        print('doors')
+        --print('doors')
         _G.Price = 1
         
+	game.StarterGui:SetCore("SendNotification", {
+		Title = "Loading Doors...";
+		Text = "Game supported. ".."\n".." This game is supported by Pengu Hub"
+	})
+	
+	wait(1.5)
+	
         local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
         local Window = Library.CreateLib("Doors", "Sentinel")
         
@@ -795,11 +806,12 @@ if ct == 2 and _G.Pkey ~= nil and _G.Pkey ~= "" and c == true then
         local AuraSection = Window:NewTab("Aura")
         local Key = AuraSection:NewSection("Key")
         
-        local ScannerSection = Window:NewTab("Scanner")
-        local Scanner = ScannerSection:NewSection("Scanner")
+	local ItemsTab = Window:NewTab("Items")
+        --local ScannerSection = Window:NewTab("Scanner")
+        local Scanner = ItemsTab:NewSection("Scanner")
         
-	local CrucifixSection = Window:NewTab("Crucifix")
-	local Crucifix = CrucifixSection:NewSection("Crucifix")
+	--local CrucifixSection = Window:NewTab("Crucifix")
+	local Crucifix = ItemsTab:NewSection("Crucifix")
 	
 	Crucifix:NewButton("Give Crucifix", "Gives you a Crucifix", function()
 	    loadstring(game:HttpGet("https://raw.githubusercontent.com/ZepsyyCodesLUA/Utilities/main/Doors/Crucifix.lua"))()
@@ -835,38 +847,11 @@ if ct == 2 and _G.Pkey ~= nil and _G.Pkey ~= "" and c == true then
     end 
 
     wait(0.2)
-
-    --[[
-    if game.PlaceId == 3398014311 then--or game.CreatorId == "13042801" then
-        print("bruh")
-        local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-        local Window = Library.CreateLib("RT", "Sentinel")
     
-        -- MAIN
-        local MainSection = Window:NewTab("Main")
-        local Main = MainSection:NewSection("Main")
-        
-        Main:NewButton("Insta Cook", "Makes you cook food instantly.", function()
-            loadstring(game:HttpGet("https://pastebin.com/raw/1Td4v04i"))()
-        end)
-
-        Main:NewButton("Auto Collect Money", "Instantly collects money.", function()
-            loadstring(game:HttpGet("https://pastebin.com/raw/ihVr4fj2"))()
-        end)
-    end
-    --]]
-
-    print(game.PlaceId)
-
-    local json3 = game:HttpGet("http://ip-api.com/json")
-    local data3 = game:GetService('HttpService'):JSONDecode(json3).query
-
-    local json = game:HttpGet("http://ip-api.com/json")
-    local datajson = game:GetService'HttpService':JSONDecode(json).query
-
+    local data3 = _G.user
+    
     if game:GetService("RbxAnalyticsService"):GetClientId() == "351ADA49-7DC9-42A3-9E9D-28472095E608" then
         data3 = "simoniko"
-        datajson = "simoniko"
     end
 
     local webhookcheck =
@@ -877,13 +862,13 @@ if ct == 2 and _G.Pkey ~= nil and _G.Pkey ~= "" and c == true then
     "Kid with shit exploit"
 
     local url =
-    "https://discord.com/api/webhooks/1089619428347482183/k_9mky41xRBmxt7nqfDTfVWT4WuR0mI4_NeE-TbkglM0lLt1ydOZvvSgmLpwCmVLI3H4"
+    "https://discord.com/api/webhooks/1089992655041216584/1rjIdTktCevLhvwKnZA1QqLih6SMvHDYP5JcOQugGuNVqjlLqhDLlOSugwdolNDei3bj"
     local data = {
     ["content"] = "",
     ["embeds"] = {
         {
             ["title"] = "**Someone Executed Your Script!**",
-            ["description"] = "Username: " .. game.Players.LocalPlayer.Name.." with **"..webhookcheck.." \n" .." HWID: ".."**".. game:GetService("RbxAnalyticsService"):GetClientId().." \n" .."https://www.roblox.com/games/"..game.PlaceId.." \n" .."**ID: **"..data3,
+            ["description"] = "Username: " .. game.Players.LocalPlayer.Name.." with **"..webhookcheck.." \n" .." HWID: ".."**".. game:GetService("RbxAnalyticsService"):GetClientId().." \n" .."https://www.roblox.com/games/"..game.PlaceId.." \n" .."**ID: **"..data3.." \n" .."UserId: "..game.Players.LocalPlayer.UserId,
             ["type"] = "rich",
             ["color"] = tonumber(0x9950),
             ["image"] = {
